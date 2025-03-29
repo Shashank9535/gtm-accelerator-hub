@@ -3,6 +3,7 @@ import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import HeroSection from '@/components/HeroSection';
+import VideoSection from '@/components/VideoSection';
 import ExpertsSection from '@/components/ExpertsSection';
 import EventsSection from '@/components/EventsSection';
 import ResourcesSection from '@/components/ResourcesSection';
@@ -16,6 +17,7 @@ const Index: React.FC = () => {
       <Navbar />
       <main className="flex-grow">
         <HeroSection />
+        <VideoSection />
         <ExpertsSection />
         <ResourcesSection />
         <EventsSection />
