@@ -19,8 +19,8 @@ const Index: React.FC = () => {
         <HeroSection />
         <VideoSection />
         <ExpertsSection />
-        <ResourcesSection />
         <EventsSection />
+        <ResourcesSection />
         <TestimonialsSection />
         <SubscriptionPlansSection />
         <CallToAction />

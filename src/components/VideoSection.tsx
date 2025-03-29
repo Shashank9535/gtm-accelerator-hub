@@ -10,14 +10,19 @@ const VideoSection: React.FC = () => {
             See GTM Unbound in Action
           </h2>
           <div className="relative pt-[56.25%] rounded-lg overflow-hidden shadow-xl">
-            <iframe
-              className="absolute inset-0 w-full h-full object-cover"
-              src="https://www.youtube.com/embed/hXQZ4eos9Ak"
-              title="GTM Unbound Video"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+            <div className="absolute inset-0 w-full h-full bg-gray-800">
+              <div className="absolute inset-0 w-full h-full flex items-center justify-center">
+                <iframe
+                  className="absolute inset-0 w-full h-full"
+                  src="https://www.youtube.com/embed/hXQZ4eos9Ak?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1&playlist=hXQZ4eos9Ak"
+                  title="GTM Unbound Video"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+                <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/40 pointer-events-none"></div>
+              </div>
+            </div>
           </div>
           <p className="text-center text-gtm-deep-blue mt-6 font-medium text-lg">
             We are on a mission to simplify Go-To-Market for Global Technology Companies
