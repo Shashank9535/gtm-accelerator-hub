@@ -1,127 +1,151 @@
 
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { Menu, X } from 'lucide-react';
-import Logo from '@/components/Logo';
+import { Link, useLocation } from 'react-router-dom';
+import { Button } from './ui/button';
 import { motion } from 'framer-motion';
+import Logo from './Logo';
+
+interface NavItem {
+  label: string;
+  href: string;
+}
+
+const navItems: NavItem[] = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Experts', href: '/experts' },
+  { label: 'Events', href: '/events' },
+  { label: 'Resources', href: '/resources' },
+];
 
 const Navbar: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 10;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
-      }
+      setIsScrolled(window.scrollY > 10);
     };
-
+    
     window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [scrolled]);
-
-  const handleRequestInvite = () => {
-    window.location.href = "https://gtmunbound.com/";
-  };
-
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location]);
+  
   return (
-    <header className={`sticky top-0 z-50 transition-all duration-300 ${
-      scrolled ? 'shadow-md bg-white/90 backdrop-blur-md' : 'bg-transparent shadow-sm'
-    }`}>
-      <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="flex items-center"
-        >
-          <Logo className="hover:scale-105 transition-transform duration-300" />
-        </motion.div>
-        
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-6">
-          {['Experts', 'Events', 'Resources', 'Community', 'About'].map((item, index) => (
-            <motion.div
-              key={item}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
-            >
-              <Link to={`/${item.toLowerCase()}`} className="text-indigo-900 hover:text-teal-500 transition-colors relative group">
-                {item}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 group-hover:w-full transition-all duration-300"></span>
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-white/10 backdrop-blur-lg shadow-lg' : 'bg-transparent'
+      }`}
+    >
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16 md:h-20">
+          <Link to="/" className="flex items-center">
+            <Logo className="h-8 w-auto" />
+          </Link>
+          
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-6">
+            {navItems.map((item) => (
+              <Link
+                key={item.label}
+                to={item.href}
+                className={`text-sm font-medium transition-colors ${
+                  location.pathname === item.href
+                    ? 'text-white'
+                    : 'text-gray-300 hover:text-white'
+                }`}
+              >
+                {item.label}
               </Link>
-            </motion.div>
-          ))}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-          >
-            <Button 
-              onClick={handleRequestInvite}
-              className="bg-teal-400 hover:bg-teal-300 text-indigo-900 font-medium rounded-md shadow-lg hover:shadow-teal-400/20 transition-all"
+            ))}
+          </nav>
+          
+          {/* Desktop CTA */}
+          <div className="hidden md:block">
+            <motion.div
               whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
+              whileTap={{ scale: 0.95 }}
             >
-              Request Invite
-            </Button>
-          </motion.div>
-        </nav>
-        
-        {/* Mobile menu button */}
-        <motion.button
-          className="md:hidden"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          whileTap={{ scale: 0.95 }}
-        >
-          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </motion.button>
+              <Button 
+                onClick={() => window.location.href = "https://gtmunbound.com/"}
+                className="bg-gradient-to-r from-[#FF0066] to-[#0099FF] hover:opacity-90 text-white border-none shadow-[0_0_15px_rgba(255,0,102,0.3)]"
+              >
+                Request an Invite
+              </Button>
+            </motion.div>
+          </div>
+          
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden flex items-center justify-center w-10 h-10 text-gray-300 hover:text-white"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              {isMobileMenuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
+        </div>
       </div>
       
-      {/* Mobile menu */}
-      {isMenuOpen && (
-        <motion.div 
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <motion.div
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
           exit={{ opacity: 0, height: 0 }}
           transition={{ duration: 0.3 }}
-          className="md:hidden py-4 px-4 bg-white/90 backdrop-blur-md shadow-inner"
+          className="md:hidden bg-white/10 backdrop-blur-lg border-t border-white/10"
         >
-          <nav className="flex flex-col space-y-4">
-            {['Experts', 'Events', 'Resources', 'Community', 'About'].map((item, index) => (
-              <motion.div
-                key={item}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-              >
-                <Link 
-                  to={`/${item.toLowerCase()}`} 
-                  className="text-indigo-900 hover:text-teal-500 transition-colors p-2 block"
-                  onClick={() => setIsMenuOpen(false)}
+          <div className="container mx-auto px-4 py-4">
+            <nav className="flex flex-col space-y-4">
+              {navItems.map((item) => (
+                <Link
+                  key={item.label}
+                  to={item.href}
+                  className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                    location.pathname === item.href
+                      ? 'bg-white/10 text-white'
+                      : 'text-gray-300 hover:bg-white/5 hover:text-white'
+                  }`}
                 >
-                  {item}
+                  {item.label}
                 </Link>
-              </motion.div>
-            ))}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.5 }}
-            >
-              <Button 
-                onClick={handleRequestInvite}
-                className="bg-teal-400 hover:bg-teal-300 text-indigo-900 font-medium w-full shadow-md"
-              >
-                Request Invite
-              </Button>
-            </motion.div>
-          </nav>
+              ))}
+              <div className="pt-2">
+                <Button 
+                  onClick={() => window.location.href = "https://gtmunbound.com/"}
+                  className="w-full bg-gradient-to-r from-[#FF0066] to-[#0099FF] hover:opacity-90 text-white border-none shadow-[0_0_15px_rgba(255,0,102,0.3)]"
+                >
+                  Request an Invite
+                </Button>
+              </div>
+            </nav>
+          </div>
         </motion.div>
       )}
     </header>
