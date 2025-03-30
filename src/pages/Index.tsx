@@ -41,7 +41,7 @@ const Index: React.FC = () => {
       {/* Add futuristic 3D background elements */}
       <div className="fixed inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gtm-deep-blue/5 via-transparent to-transparent opacity-60"></div>
       
-      <style jsx>{`
+      <style>{`
         .custom-cursor {
           position: fixed;
           width: 30px;
