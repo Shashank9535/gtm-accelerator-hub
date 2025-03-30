@@ -13,7 +13,6 @@ interface NavItem {
 const navItems: NavItem[] = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
-  { label: 'Experts', href: '/experts' },
   { label: 'Events', href: '/events' },
   { label: 'Resources', href: '/resources' },
 ];
@@ -44,9 +43,9 @@ const Navbar: React.FC = () => {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <Link to="/" className="flex items-center">
+          <div className="flex items-center">
             <Logo className="h-8 w-auto" />
-          </Link>
+          </div>
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
