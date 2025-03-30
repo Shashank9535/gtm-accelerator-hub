@@ -138,7 +138,7 @@ const EventsSection: React.FC = () => {
                 alt="SaaSBoomi Annual 2025" 
                 className="w-full h-64 object-cover"
               />
-            </div>
+            </motion.div>
             <motion.div 
               className="rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow"
               whileHover={{ y: -5, transition: { duration: 0.2 } }}
@@ -148,7 +148,7 @@ const EventsSection: React.FC = () => {
                 alt="GTM Unbound Founders' Walk" 
                 className="w-full h-64 object-cover"
               />
-            </div>
+            </motion.div>
             <motion.div 
               className="rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow"
               whileHover={{ y: -5, transition: { duration: 0.2 } }}
@@ -158,7 +158,7 @@ const EventsSection: React.FC = () => {
                 alt="Tech Founders Meetup" 
                 className="w-full h-64 object-cover"
               />
-            </div>
+            </motion.div>
           </div>
         </motion.div>
         
