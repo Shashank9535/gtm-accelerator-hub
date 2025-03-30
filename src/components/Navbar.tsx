@@ -29,8 +29,8 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <header className={`sticky top-0 z-50 bg-white backdrop-blur-md transition-all duration-300 ${
-      scrolled ? 'shadow-md bg-white/90' : 'shadow-sm'
+    <header className={`sticky top-0 z-50 transition-all duration-300 ${
+      scrolled ? 'shadow-md bg-white/90 backdrop-blur-md' : 'bg-transparent shadow-sm'
     }`}>
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <motion.div
@@ -51,9 +51,9 @@ const Navbar: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
             >
-              <Link to={`/${item.toLowerCase()}`} className="text-gtm-deep-blue hover:text-gtm-light-blue transition-colors relative group">
+              <Link to={`/${item.toLowerCase()}`} className="text-indigo-900 hover:text-teal-500 transition-colors relative group">
                 {item}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gtm-orange group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 group-hover:w-full transition-all duration-300"></span>
               </Link>
             </motion.div>
           ))}
@@ -64,7 +64,9 @@ const Navbar: React.FC = () => {
           >
             <Button 
               onClick={handleRequestInvite}
-              className="bg-gtm-orange hover:bg-opacity-90 text-white font-medium rounded-md shadow-lg hover:shadow-gtm-orange/20 transition-all"
+              className="bg-teal-400 hover:bg-teal-300 text-indigo-900 font-medium rounded-md shadow-lg hover:shadow-teal-400/20 transition-all"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
             >
               Request Invite
             </Button>
@@ -88,7 +90,7 @@ const Navbar: React.FC = () => {
           animate={{ opacity: 1, height: 'auto' }}
           exit={{ opacity: 0, height: 0 }}
           transition={{ duration: 0.3 }}
-          className="md:hidden py-4 px-4 bg-white shadow-inner"
+          className="md:hidden py-4 px-4 bg-white/90 backdrop-blur-md shadow-inner"
         >
           <nav className="flex flex-col space-y-4">
             {['Experts', 'Events', 'Resources', 'Community', 'About'].map((item, index) => (
@@ -100,7 +102,7 @@ const Navbar: React.FC = () => {
               >
                 <Link 
                   to={`/${item.toLowerCase()}`} 
-                  className="text-gtm-deep-blue hover:text-gtm-light-blue transition-colors p-2 block"
+                  className="text-indigo-900 hover:text-teal-500 transition-colors p-2 block"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item}
@@ -114,7 +116,7 @@ const Navbar: React.FC = () => {
             >
               <Button 
                 onClick={handleRequestInvite}
-                className="bg-gtm-orange hover:bg-opacity-90 text-white font-medium w-full shadow-md"
+                className="bg-teal-400 hover:bg-teal-300 text-indigo-900 font-medium w-full shadow-md"
               >
                 Request Invite
               </Button>

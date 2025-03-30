@@ -38,15 +38,40 @@ const Index: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col overflow-hidden">
-      {/* Add futuristic 3D background elements */}
-      <div className="fixed inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gtm-deep-blue/5 via-transparent to-transparent opacity-60"></div>
+      {/* Add geometric floating elements for Ghibli-inspired background */}
+      <div className="fixed inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/10 via-teal-100/5 to-transparent opacity-60"></div>
+      
+      {/* Floating particles */}
+      <div className="fixed inset-0 -z-5 overflow-hidden pointer-events-none">
+        {[...Array(15)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full bg-gradient-to-r from-teal-300/20 to-emerald-200/20 blur-sm"
+            style={{
+              width: Math.random() * 60 + 20,
+              height: Math.random() * 60 + 20,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              x: [0, Math.random() * 50 - 25],
+              y: [0, Math.random() * 50 - 25],
+            }}
+            transition={{
+              repeat: Infinity,
+              repeatType: "reverse",
+              duration: Math.random() * 10 + 10,
+            }}
+          />
+        ))}
+      </div>
       
       <style>{`
         .custom-cursor {
           position: fixed;
           width: 30px;
           height: 30px;
-          border: 2px solid rgba(255, 102, 0, 0.5);
+          border: 2px solid rgba(78, 204, 163, 0.6);
           border-radius: 50%;
           pointer-events: none;
           transform: translate(-50%, -50%);
@@ -63,14 +88,14 @@ const Index: React.FC = () => {
           transform: translate(-50%, -50%);
           width: 5px;
           height: 5px;
-          background-color: #FF6600;
+          background-color: #4ECCA3;
           border-radius: 50%;
         }
         
         body:hover .custom-cursor {
           width: 40px;
           height: 40px;
-          border-color: rgba(255, 102, 0, 0.8);
+          border-color: rgba(78, 204, 163, 0.8);
         }
       `}</style>
       
@@ -95,9 +120,9 @@ const Index: React.FC = () => {
         transition={{ delay: 2, duration: 0.5 }}
       >
         <div className="relative">
-          <div className="absolute inset-0 rounded-full bg-gtm-orange blur-md opacity-50"></div>
+          <div className="absolute inset-0 rounded-full bg-teal-400 blur-md opacity-50"></div>
           <button 
-            className="relative bg-white text-gtm-deep-blue p-3 rounded-full shadow-lg hover:shadow-gtm-orange/50 transition-all"
+            className="relative bg-white text-indigo-900 p-3 rounded-full shadow-lg hover:shadow-teal-400/50 transition-all"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
