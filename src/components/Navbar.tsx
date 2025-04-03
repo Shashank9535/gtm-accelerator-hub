@@ -14,7 +14,7 @@ const navItems: NavItem[] = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Events', href: '/events' },
-  { label: 'Resources', href: '/resources' },
+  { label: 'Advisors', href: '/advisors' },
 ];
 
 const Navbar: React.FC = () => {
