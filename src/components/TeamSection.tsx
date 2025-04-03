@@ -9,7 +9,7 @@ const founders = [
     role: "Founder",
     company: "GTM Unbound",
     bio: "Passionate about helping tech startups navigate global markets and accelerate their international growth.",
-    imageSrc: "/lovable-uploads/fcf87db1-8598-4e99-b4b9-80ea4d759a94.png",
+    imageSrc: "/lovable-uploads/b46d13d8-351f-49b7-8553-dcd0c25bdbfd.png",
     linkedinUrl: "https://www.linkedin.com/in/aditi-aggarwal-mehta/"
   },
   {
