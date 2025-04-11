@@ -2,6 +2,8 @@
 import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import EventsSection from '@/components/EventsSection';
+import ExpertsSection from '@/components/ExpertsSection';
 import { motion } from 'framer-motion';
 import { ArrowRight, ArrowUpRight, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -212,6 +214,12 @@ const Index: React.FC = () => {
             </div>
           </div>
         </section>
+        
+        {/* Upcoming Events Section */}
+        <EventsSection />
+        
+        {/* Previous Events Section */}
+        <ExpertsSection />
         
         {/* Testimonial Section - Simplified */}
         <section className="py-16 md:py-24">
