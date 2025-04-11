@@ -3,7 +3,6 @@ import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import TeamSection from '@/components/TeamSection';
-import AdvisorsSection from '@/components/AdvisorsSection';
 import { motion } from 'framer-motion';
 
 const About: React.FC = () => {
@@ -162,9 +161,6 @@ const About: React.FC = () => {
         
         {/* Team Members Section */}
         <TeamSection />
-        
-        {/* Advisors Section */}
-        <AdvisorsSection />
       </main>
       
       <Footer />

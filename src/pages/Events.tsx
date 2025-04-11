@@ -3,9 +3,9 @@ import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { motion } from 'framer-motion';
-import { Helmet } from 'react-helmet';
 import { Calendar, Users, MapPin, Globe, Zap } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import MentorsSection from '@/components/MentorsSection';
 
 const eventTypes = [
   {
@@ -127,12 +127,15 @@ const Events: React.FC = () => {
             </div>
           </motion.div>
           
+          {/* Mentors Section */}
+          <MentorsSection />
+          
           {/* Coming Soon Message */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
-            className="text-center bg-white p-8 rounded-lg shadow-md max-w-2xl mx-auto"
+            className="text-center bg-white p-8 rounded-lg shadow-md max-w-2xl mx-auto my-16"
           >
             <h3 className="text-xl font-bold mb-4 text-gtm-deep-blue">Upcoming Events Calendar</h3>
             <p className="text-lg mb-3">Events page content is coming soon!</p>
