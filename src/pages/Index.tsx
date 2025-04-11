@@ -4,11 +4,9 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import HeroSection from '@/components/HeroSection';
 import VideoSection from '@/components/VideoSection';
-import ExpertsSection from '@/components/ExpertsSection';
 import EventsSection from '@/components/EventsSection';
-import ResourcesSection from '@/components/ResourcesSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
-import SubscriptionPlansSection from '@/components/SubscriptionPlansSection';
+import MentorsSection from '@/components/MentorsSection';
 import CallToAction from '@/components/CallToAction';
 import { motion } from 'framer-motion';
 
@@ -103,11 +101,9 @@ const Index: React.FC = () => {
       <main className="flex-grow">
         <HeroSection />
         <VideoSection />
-        <ExpertsSection />
+        <MentorsSection />
         <EventsSection />
-        <ResourcesSection />
         <TestimonialsSection />
-        <SubscriptionPlansSection />
         <CallToAction />
       </main>
       <Footer />

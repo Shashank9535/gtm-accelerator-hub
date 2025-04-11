@@ -5,7 +5,6 @@ import Footer from '@/components/Footer';
 import { motion } from 'framer-motion';
 import { Calendar, Users, MapPin, Globe, Zap } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-import MentorsSection from '@/components/MentorsSection';
 
 const eventTypes = [
   {
@@ -126,9 +125,6 @@ const Events: React.FC = () => {
               ))}
             </div>
           </motion.div>
-          
-          {/* Mentors Section */}
-          <MentorsSection />
           
           {/* Coming Soon Message */}
           <motion.div
