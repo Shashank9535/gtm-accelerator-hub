@@ -46,7 +46,7 @@ const HeroSection: React.FC = () => {
             transition={{ duration: 0.7 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
           >
-            Where Founders Fall in Love With GTM
+            Go-To-Market, Without Guesswork
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: -10 }}
@@ -54,7 +54,7 @@ const HeroSection: React.FC = () => {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="text-lg md:text-xl mb-8 text-white/90"
           >
-            Lovable is a founder-first platform bringing together GTM experts, operator wisdom, and real execution power — no fluff, just traction.
+            GTM Unbound connects founders with top GTM experts and creates a vibrant, invite-only community for technology startups expanding internationally.
           </motion.p>
           
           <motion.div
@@ -70,7 +70,7 @@ const HeroSection: React.FC = () => {
                 document.getElementById('what-is-gtm')?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              Discover Lovable
+              Discover GTM Unbound
               <ArrowDown className="ml-2 h-5 w-5" />
             </Button>
           </motion.div>
@@ -96,3 +96,4 @@ const HeroSection: React.FC = () => {
 };
 
 export default HeroSection;
+

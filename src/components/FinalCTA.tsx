@@ -16,14 +16,14 @@ const FinalCTA: React.FC = () => {
           className="max-w-3xl mx-auto text-center"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-lovable-dark-blue mb-6">
-            Ready to Make GTM Lovable?
+            Ready to Accelerate Your Global Growth?
           </h2>
           <p className="text-lg text-gray-600 mb-8">
-            Join Lovable today and connect with the expertise you need to succeed in your go-to-market journey.
+            Join GTM Unbound today and connect with the expertise you need to succeed internationally.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button size="lg" className="bg-lovable-accent hover:bg-lovable-accent-hover text-white font-semibold shadow-lg">
-              Join the Waitlist
+              Find a GTM Mentor
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
@@ -34,3 +34,4 @@ const FinalCTA: React.FC = () => {
 };
 
 export default FinalCTA;
+

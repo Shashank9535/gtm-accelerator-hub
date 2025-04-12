@@ -39,10 +39,10 @@ const WhatIsSection: React.FC = () => {
             transition={{ duration: 0.7 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-lovable-dark-blue mb-4">
-              How Lovable Helps You Win GTM
+              What is GTM Unbound?
             </h2>
             <p className="text-lg text-gray-600">
-              From community to content to curated programs — we connect you to what actually works in your go-to-market journey.
+              GTM Unbound provides the tools, expertise, and network to help you navigate international markets. We connect founders with top GTM experts and create a vibrant, invite-only community for technology startups expanding internationally.
             </p>
           </motion.div>
         </div>
@@ -79,7 +79,7 @@ const WhatIsSection: React.FC = () => {
             size="lg"
             className="bg-lovable-blue hover:bg-lovable-blue/90 text-white font-semibold"
           >
-            Discover Lovable
+            Explore the Platform
           </Button>
         </div>
       </div>
@@ -88,3 +88,4 @@ const WhatIsSection: React.FC = () => {
 };
 
 export default WhatIsSection;
+
