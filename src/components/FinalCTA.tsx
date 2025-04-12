@@ -3,11 +3,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
 
 const FinalCTA: React.FC = () => {
   return (
-    <section id="final-cta" className="py-16 md:py-24 bg-lovable-blue/10">
+    <section id="final-cta" className="py-16 md:py-24 bg-gradient-to-b from-lovable-gray-light to-white">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -23,7 +22,7 @@ const FinalCTA: React.FC = () => {
             Join Lovable today and connect with the expertise you need to succeed in your go-to-market journey.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Button size="lg" className="bg-lovable-accent hover:bg-lovable-accent/90 text-white">
+            <Button size="lg" className="bg-lovable-accent hover:bg-lovable-accent-hover text-white font-semibold shadow-lg">
               Join the Waitlist
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>

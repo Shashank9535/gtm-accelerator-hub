@@ -76,7 +76,7 @@ const EventsSection: React.FC = () => {
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute top-2 right-2">
-                    <Badge variant="default" className="bg-lovable-blue text-white">
+                    <Badge variant="accent" className="bg-lovable-accent text-white">
                       {event.category}
                     </Badge>
                   </div>
@@ -104,7 +104,7 @@ const EventsSection: React.FC = () => {
                 </CardContent>
                 
                 <CardFooter>
-                  <Button className="w-full bg-lovable-blue hover:bg-lovable-blue/90 text-white">
+                  <Button className="w-full bg-lovable-blue hover:bg-lovable-blue/90 text-white font-semibold">
                     Apply to Attend
                   </Button>
                 </CardFooter>

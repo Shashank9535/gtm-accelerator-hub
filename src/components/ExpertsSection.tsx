@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
 
 const ExpertsSection: React.FC = () => {
   const experts = [
@@ -40,7 +39,7 @@ const ExpertsSection: React.FC = () => {
 
   // Featured testimonial
   const testimonial = {
-    quote: "Lovable gave us the playbooks and support we needed to find product-market fit with confidence.",
+    quote: ""Lovable gave us the playbooks and support we needed to find product-market fit with confidence."",
     name: "Vikram, CEO",
     company: "Ornity",
     image: "/lovable-uploads/48c93a0f-10cf-45e5-be50-1515ebddbde1.png"
@@ -73,7 +72,7 @@ const ExpertsSection: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="bg-white p-8 rounded-lg shadow-md"
           >
-            <p className="text-xl italic text-gray-700 mb-6">"{testimonial.quote}"</p>
+            <p className="text-xl italic text-gray-700 mb-6">{testimonial.quote}</p>
             <div className="flex items-center">
               <Avatar className="h-12 w-12 mr-4">
                 <AvatarImage src={testimonial.image} alt={testimonial.name} />
@@ -97,13 +96,13 @@ const ExpertsSection: React.FC = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
             >
-              <div className="p-6">
+              <div className="p-6 text-center">
                 <Avatar className="h-20 w-20 mb-4 mx-auto">
                   <AvatarImage src={expert.image} alt={expert.name} />
                   <AvatarFallback>{expert.name.charAt(0)}</AvatarFallback>
                 </Avatar>
-                <h3 className="text-lg font-bold text-lovable-dark-blue text-center mb-1">{expert.name}</h3>
-                <p className="text-sm text-gray-600 text-center mb-3">{expert.title}, {expert.company}</p>
+                <h3 className="text-lg font-bold text-lovable-dark-blue mb-1">{expert.name}</h3>
+                <p className="text-sm text-gray-600 mb-3">{expert.title}, {expert.company}</p>
                 <div className="flex flex-wrap gap-2 justify-center">
                   {expert.tags.map(tag => (
                     <Badge key={tag} variant="outline" className="bg-lovable-gray-light text-lovable-dark-blue">
@@ -117,7 +116,7 @@ const ExpertsSection: React.FC = () => {
         </div>
 
         <div className="mt-12 text-center">
-          <Button className="bg-lovable-blue hover:bg-lovable-blue/90 text-white">
+          <Button className="bg-lovable-blue hover:bg-lovable-blue/90 text-white font-semibold">
             See All Experts
           </Button>
         </div>

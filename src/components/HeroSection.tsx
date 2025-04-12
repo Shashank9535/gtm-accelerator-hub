@@ -52,7 +52,7 @@ const HeroSection: React.FC = () => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-lg md:text-xl mb-8 text-white/80"
+            className="text-lg md:text-xl mb-8 text-white/90"
           >
             Lovable is a founder-first platform bringing together GTM experts, operator wisdom, and real execution power — no fluff, just traction.
           </motion.p>
@@ -65,7 +65,7 @@ const HeroSection: React.FC = () => {
           >
             <Button 
               size="lg" 
-              className="bg-lovable-accent hover:bg-opacity-90 text-white border-none"
+              className="bg-lovable-accent hover:bg-lovable-accent-hover text-white border-none shadow-lg"
               onClick={() => {
                 document.getElementById('what-is-gtm')?.scrollIntoView({ behavior: 'smooth' });
               }}
@@ -79,14 +79,14 @@ const HeroSection: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.8 }}
-            className="mt-12 pt-12 border-t border-white/10"
+            className="mt-12 pt-12 border-t border-white/20"
           >
             <p className="text-sm text-white/60 mb-4">Trusted by founders from</p>
             <div className="flex justify-center flex-wrap items-center gap-8">
-              <img src="/lovable-uploads/2776d812-1dda-43c7-bee0-7179994c6c9d.png" alt="Y Combinator" className="h-7 brightness-0 invert opacity-70" />
-              <img src="/lovable-uploads/75e2f249-23b8-4286-88bb-41d4215ec3fe.png" alt="Sequoia" className="h-7 brightness-0 invert opacity-70" />
-              <img src="/lovable-uploads/a763419d-e68b-4852-b521-a8e6c830f83c.png" alt="AWS" className="h-7 brightness-0 invert opacity-70" />
-              <img src="/lovable-uploads/2776d812-1dda-43c7-bee0-7179994c6c9d.png" alt="Google Cloud" className="h-7 brightness-0 invert opacity-70" />
+              <img src="/lovable-uploads/2776d812-1dda-43c7-bee0-7179994c6c9d.png" alt="Y Combinator" className="h-7 brightness-0 invert opacity-80" />
+              <img src="/lovable-uploads/75e2f249-23b8-4286-88bb-41d4215ec3fe.png" alt="Sequoia" className="h-7 brightness-0 invert opacity-80" />
+              <img src="/lovable-uploads/a763419d-e68b-4852-b521-a8e6c830f83c.png" alt="AWS" className="h-7 brightness-0 invert opacity-80" />
+              <img src="/lovable-uploads/2776d812-1dda-43c7-bee0-7179994c6c9d.png" alt="Google Cloud" className="h-7 brightness-0 invert opacity-80" />
             </div>
           </motion.div>
         </div>
