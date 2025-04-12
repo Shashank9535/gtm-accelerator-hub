@@ -1,17 +1,21 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { ArrowDown, ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const HeroSection: React.FC = () => {
-  const handleRequestInvite = () => {
-    window.location.href = "https://gtmunbound.com/";
-  };
-
   return (
-    <section className="relative bg-gradient-to-r from-indigo-900 to-teal-600 text-white py-20 md:py-32 overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center py-20 md:py-32 overflow-hidden">
+      {/* Background gradient & effects */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-gtm-deep-blue/95 via-gtm-deep-blue/80 to-gtm-light-blue/70"></div>
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center mix-blend-overlay opacity-30"></div>
+      </div>
+      
       {/* Ghibli-inspired atmospheric particles */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center opacity-10"></div>
+      <div className="absolute inset-0 z-0 overflow-hidden">
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
@@ -36,40 +40,67 @@ const HeroSection: React.FC = () => {
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-3xl mx-auto text-center text-white">
           <motion.h1 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
           >
-            Unlock Your Global GTM Potential
+            Go-To-Market, Without Guesswork
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-lg md:text-xl mb-8"
+            className="text-lg md:text-xl mb-8 text-white/80"
           >
-            Connect with Experts, Join a Thriving Community, Scale Internationally
+            GTM Unbound connects founders with top GTM experts and creates a vibrant, 
+            invite-only community for technology startups expanding internationally.
           </motion.p>
-          <motion.button 
-            onClick={handleRequestInvite}
-            className="relative overflow-hidden group bg-teal-400 hover:bg-teal-300 text-indigo-900 text-lg py-3 px-8 rounded-md shadow-xl transition-all duration-300"
+          
+          <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
+            className="flex flex-wrap justify-center gap-4"
           >
-            <span className="relative z-10">Request an Invite</span>
-            <motion.span 
-              className="absolute inset-0 bg-white/20"
-              initial={{ x: "-100%" }}
-              whileHover={{ x: "100%" }}
-              transition={{ duration: 0.7 }}
-            />
-          </motion.button>
+            <Button 
+              size="lg" 
+              className="bg-gtm-orange hover:bg-opacity-90 text-white border-none"
+              onClick={() => {
+                document.getElementById('what-is-gtm')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              Explore the Platform
+              <ArrowDown className="ml-2 h-5 w-5" />
+            </Button>
+            
+            <Link to="/mentors">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-white text-white hover:bg-white hover:bg-opacity-10"
+              >
+                Find a Mentor
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.8 }}
+            className="mt-12 pt-12 border-t border-white/10"
+          >
+            <p className="text-sm text-white/60 mb-4">Trusted by founders from</p>
+            <div className="flex justify-center flex-wrap items-center gap-8">
+              <img src="/lovable-uploads/2776d812-1dda-43c7-bee0-7179994c6c9d.png" alt="Company logo" className="h-7 brightness-0 invert opacity-70" />
+              <img src="/lovable-uploads/75e2f249-23b8-4286-88bb-41d4215ec3fe.png" alt="Company logo" className="h-5 brightness-0 invert opacity-70" />
+              <img src="/lovable-uploads/a763419d-e68b-4852-b521-a8e6c830f83c.png" alt="Company logo" className="h-6 brightness-0 invert opacity-70" />
+            </div>
+          </motion.div>
         </div>
       </div>
       

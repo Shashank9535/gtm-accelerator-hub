@@ -2,19 +2,21 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from './ui/button';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Logo from './Logo';
+import { X, Menu } from 'lucide-react';
 
 interface NavItem {
   label: string;
   href: string;
+  isHash?: boolean;
 }
 
 const navItems: NavItem[] = [
   { label: 'Home', href: '/' },
-  { label: 'Mentors', href: '/mentors' },
-  { label: 'Events', href: '/events' },
-  { label: 'Advisors', href: '/advisors' },
+  { label: 'How It Works', href: '#what-is-gtm', isHash: true },
+  { label: 'Events', href: '#events', isHash: true },
+  { label: 'Experts', href: '#experts', isHash: true },
   { label: 'About', href: '/about' },
 ];
 
@@ -35,6 +37,16 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location]);
+
+  const handleNavItemClick = (item: NavItem) => {
+    if (item.isHash) {
+      const element = document.querySelector(item.href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+    setIsMobileMenuOpen(false);
+  };
   
   return (
     <header 
@@ -45,7 +57,7 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
           <div className="flex items-center">
-            <Logo className="h-8 w-auto" />
+            <Logo variant={isScrolled ? "default" : "white"} className="h-8 w-auto" />
           </div>
           
           {/* Desktop Navigation */}
@@ -53,11 +65,12 @@ const Navbar: React.FC = () => {
             {navItems.map((item) => (
               <Link
                 key={item.label}
-                to={item.href}
+                to={item.isHash ? "#" : item.href}
+                onClick={() => item.isHash && handleNavItemClick(item)}
                 className={`text-sm font-medium transition-colors ${
                   location.pathname === item.href
-                    ? 'text-white'
-                    : 'text-gray-300 hover:text-white'
+                    ? 'text-gtm-orange'
+                    : isScrolled ? 'text-gtm-deep-blue hover:text-gtm-orange' : 'text-white hover:text-gtm-orange'
                 }`}
               >
                 {item.label}
@@ -73,7 +86,10 @@ const Navbar: React.FC = () => {
             >
               <Button 
                 onClick={() => window.location.href = "https://gtmunbound.com/"}
-                className="bg-gradient-to-r from-[#FF0066] to-[#0099FF] hover:opacity-90 text-white border-none shadow-[0_0_15px_rgba(255,0,102,0.3)]"
+                className={`${isScrolled 
+                  ? 'bg-gtm-deep-blue hover:bg-gtm-light-blue text-white' 
+                  : 'bg-gtm-orange hover:bg-opacity-90 text-white'} 
+                  border-none shadow-lg`}
               >
                 Request an Invite
               </Button>
@@ -82,72 +98,57 @@ const Navbar: React.FC = () => {
           
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden flex items-center justify-center w-10 h-10 text-gray-300 hover:text-white"
+            className="md:hidden flex items-center justify-center w-10 h-10"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              {isMobileMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
+            {isMobileMenuOpen ? (
+              <X className={isScrolled ? "text-gtm-deep-blue" : "text-white"} />
+            ) : (
+              <Menu className={isScrolled ? "text-gtm-deep-blue" : "text-white"} />
+            )}
           </button>
         </div>
       </div>
       
       {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          exit={{ opacity: 0, height: 0 }}
-          transition={{ duration: 0.3 }}
-          className="md:hidden bg-white/10 backdrop-blur-lg border-t border-white/10"
-        >
-          <div className="container mx-auto px-4 py-4">
-            <nav className="flex flex-col space-y-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item.label}
-                  to={item.href}
-                  className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-                    location.pathname === item.href
-                      ? 'bg-white/10 text-white'
-                      : 'text-gray-300 hover:bg-white/5 hover:text-white'
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              ))}
-              <div className="pt-2">
-                <Button 
-                  onClick={() => window.location.href = "https://gtmunbound.com/"}
-                  className="w-full bg-gradient-to-r from-[#FF0066] to-[#0099FF] hover:opacity-90 text-white border-none shadow-[0_0_15px_rgba(255,0,102,0.3)]"
-                >
-                  Request an Invite
-                </Button>
-              </div>
-            </nav>
-          </div>
-        </motion.div>
-      )}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-white/10 backdrop-blur-lg border-t border-white/10"
+          >
+            <div className="container mx-auto px-4 py-4">
+              <nav className="flex flex-col space-y-4">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.label}
+                    to={item.isHash ? "#" : item.href}
+                    onClick={() => item.isHash && handleNavItemClick(item)}
+                    className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                      location.pathname === item.href
+                        ? 'bg-white/10 text-gtm-orange'
+                        : isScrolled ? 'text-gtm-deep-blue hover:bg-white/5 hover:text-gtm-orange' : 'text-white hover:bg-white/5 hover:text-gtm-orange'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+                <div className="pt-2">
+                  <Button 
+                    onClick={() => window.location.href = "https://gtmunbound.com/"}
+                    className="w-full bg-gtm-orange hover:bg-opacity-90 text-white border-none shadow-lg"
+                  >
+                    Request an Invite
+                  </Button>
+                </div>
+              </nav>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };
