@@ -39,7 +39,7 @@ const ExpertsSection: React.FC = () => {
 
   // Featured testimonial
   const testimonial = {
-    quote: ""Lovable gave us the playbooks and support we needed to find product-market fit with confidence."",
+    quote: "Lovable gave us the playbooks and support we needed to find product-market fit with confidence.",
     name: "Vikram, CEO",
     company: "Ornity",
     image: "/lovable-uploads/48c93a0f-10cf-45e5-be50-1515ebddbde1.png"
