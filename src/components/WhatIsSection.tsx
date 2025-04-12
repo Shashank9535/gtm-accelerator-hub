@@ -64,15 +64,21 @@ const WhatIsSection: React.FC = () => {
           ))}
         </div>
         
-        <div className="mt-12 text-center">
-          <h3 className="text-xl font-semibold text-gray-500 mb-6">Backed by the best</h3>
-          <div className="flex justify-center flex-wrap items-center gap-8 max-w-4xl mx-auto">
-            <img src="/lovable-uploads/2776d812-1dda-43c7-bee0-7179994c6c9d.png" alt="Y Combinator" className="h-7 opacity-70" />
-            <img src="/lovable-uploads/75e2f249-23b8-4286-88bb-41d4215ec3fe.png" alt="Sequoia" className="h-7 opacity-70" />
-            <img src="/lovable-uploads/a763419d-e68b-4852-b521-a8e6c830f83c.png" alt="AWS" className="h-7 opacity-70" />
-            <img src="/lovable-uploads/2776d812-1dda-43c7-bee0-7179994c6c9d.png" alt="Google Cloud" className="h-7 opacity-70" />
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="bg-lovable-dark-blue text-white rounded-xl p-8 mb-12"
+        >
+          <h3 className="text-2xl font-semibold text-center mb-6">GTM Unbound Partners</h3>
+          <div className="flex flex-wrap justify-center items-center gap-12 mb-6">
+            <img src="/lovable-uploads/bb227662-9c66-437e-b294-a9d4a65a6b54.png" alt="GTM Unbound Partners" className="max-w-full h-auto" />
           </div>
-        </div>
+          <p className="text-lg text-center">
+            GTM Unbound is expanding—more joining in, more being built, and the momentum is unstoppable
+          </p>
+        </motion.div>
 
         <div className="mt-12 text-center">
           <Button 
@@ -88,4 +94,3 @@ const WhatIsSection: React.FC = () => {
 };
 
 export default WhatIsSection;
-
